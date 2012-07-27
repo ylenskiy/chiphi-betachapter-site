@@ -1,0 +1,9 @@
+{% extends "brothers/base.html" %}
+
+{% block content %}
+<form action="" method="post">{% csrf_token %}
+  {{ uform.as_ul }}
+  {{ bform.as_ul }}
+  <input type="submit" value="Register" />
+</form>
+{% endblock %}

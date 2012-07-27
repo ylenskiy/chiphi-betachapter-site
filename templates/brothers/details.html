@@ -1,0 +1,7 @@
+{% extends "brothers/base.html" %}
+{% block content %}
+<h1>{{ brother.first_name }} {{ brother.last_name }}</h1>
+<p>Pledge year: {{ brother.pledge_year }}</p>
+<p>Graduation year: {{ brother.grad_year }}</p>
+<p>Email: {{ brother.email }}</p>
+{% endblock %}

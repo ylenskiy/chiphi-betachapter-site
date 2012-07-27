@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}stylesheets/global.css" />
+    {% block stylesheets %}{% endblock %}
+    <title>{% block title %}Chi Phi Beta Chapter{% endblock %}</title>
+  </head>
+
+  <body>
+    <div id="navbar">
+      <img src="{{ STATIC_URL }}images/menu/cplogo_menu.png" alt="hi" />
+      <ul id="navlist">
+        <li class="{% block menu_home %}{% endblock %}"><a href="{% url home %}">Home</a></li>
+        <li class="{% block menu_brothers %}{% endblock %}"><a href="{% url brothers %}">Brothers</a></li>
+        <li class="{% block menu_house %}{% endblock %}"><a href="{% url house %}">House</a></li>
+        <li class="{% block menu_contact %}{% endblock %}"><a href="{% url contact %}">Contact</a></li>
+        {% if user.is_authenticated %}
+        <li class="{% block menu_edit_profile %}{% endblock %}"><a href="{% url edit_profile %}">Edit Profile</a></li>
+        <li class="{% block menu_logout %}{% endblock %}"><a href="{% url logout %}">Logout</a></li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <div id="content">
+      {% block content %}{% endblock %}
+      <div id="footer"><a href="{% url login %}">Login</a></li>
+    </div>
+  </body>
+</html>

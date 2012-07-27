@@ -1,0 +1,37 @@
+.pledge-year {
+    display:block;
+    clear:both;
+    width:100%;
+    border-bottom-style: solid;
+}
+
+ul.brother-list {
+    padding:.3em .7em;
+    list-style:none;
+}
+
+ul.brother-list li {
+    float:left;
+    width:50%;
+}
+
+ul.brother-list a, ul.brother-list a:visited {
+    color:black;
+    text-decoration:none;
+    background-color:#C0C0C0;
+    
+    display:block;
+    margin:.3em;
+    padding:.3em .7em;
+}
+
+ul.brother-list a:hover { Background-color:#FF0000; }
+
+.brother-name {
+    font-size:1.3em;
+}
+
+.brother-pledgeyr {
+    font-size:.7em;
+    font-style:italic;
+}
