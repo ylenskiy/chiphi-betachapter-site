@@ -1,11 +1,11 @@
 # Django settings for chiphi_betachapter project.
 
-from os.path import join
+from os.path import join,realpath,dirname
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-BASE_WWW_DIR = '/home/ydl/www/chiphi_betachapter'
+BASE_WWW_DIR = dirname(realpath(__file__))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),

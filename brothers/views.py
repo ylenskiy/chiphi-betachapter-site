@@ -1,4 +1,5 @@
 from django.shortcuts import render
+
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -10,9 +11,12 @@ from brothers.models import Brother,BrotherEditForm
 
 def index(request):
     """Active brother listing."""
-    currentPledgeYears = sorted(list(set(
-                [b.pledge_year for b in Brother.objects.filter(active = True)])),
-                                reverse = False)
+    currentPledgeYears = sorted(
+        list(
+            set(
+                [b.pledge_year for b in Brother.objects.filter(active = True)]
+                )), reverse = False)
+
     return render(request, 'brothers/index.html',
                   {'brothers_alist': [(yr, Brother.objects.filter(pledge_year = yr))
                                       for yr in currentPledgeYears]})
@@ -26,8 +30,8 @@ def register(request):
         uform = UserCreationForm(request.POST, instance=User())
         bform = BrotherEditForm(request.POST, instance=Brother())
         if uform.is_valid() and bform.is_valid():
-            user = uform.save()
-            brother = bform.save(commit=False)
+            user         = uform.save()
+            brother      = bform.save(commit=False)
             brother.user = user
             brother.save()
             return HttpResponseRedirect('{}_{}'.format(brother.first_name, brother.last_name))
