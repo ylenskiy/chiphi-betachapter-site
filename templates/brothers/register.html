@@ -1,9 +1,42 @@
 {% extends "brothers/base.html" %}
 
 {% block content %}
-<form action="" method="post">{% csrf_token %}
-  {{ uform.as_ul }}
-  {{ bform.as_ul }}
-  <input type="submit" value="Register" />
-</form>
+<div align="center" >
+  <form action="" method="post">{% csrf_token %}
+    <table><tbody>
+      {% for field in uform.visible_fields %}
+        <tr class="baseForm">
+          <td class="baseForm">{{ field.label_tag }}:</td>
+          <td class="baseForm">{{ field }}
+            {% if field.errors %}
+              <span class="baseForm errorText">{% for error in  field.errors %}{{ error }} {% endfor %}</span>
+            {% else %}
+              {% if field.help_text %}
+                <span class="baseForm helpText">{{ field.help_text }}</span>
+              {% endif %}
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+      {% for field in bform.visible_fields %}
+        <tr class="baseForm">
+          <td class="baseForm">{{ field.label_tag }}:</td>
+          <td class="baseForm">{{ field }}
+            {% if field.errors %}
+              <span class="baseForm errorText">{% for error in  field.errors %}{{ error }} {% endfor %}</span>
+            {% else %}
+              {% if field.help_text %}
+                <span class="baseForm helpText">{{ field.help_text }}</span>
+              {% endif %}
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+      <tr class="baseForm">
+        <td></td>
+        <td class="baseForm"><input class="baseButton" type="submit" value="Register" /></td>
+      </tr>
+    </tbody></table>
+  </form>
+</div>
 {% endblock %}

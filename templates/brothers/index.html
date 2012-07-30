@@ -1,28 +1,25 @@
 {% extends "brothers/base.html" %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}stylesheets/brother-index.css" />
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}stylesheets/brother-index.css" />
 {% endblock %}
 
 {% block content %}
 
 {% if brothers_alist %}
-{% for p in brothers_alist %}
-<h2 class="pledge-year">{{ p.0 }}'s</h2>
-<ul class="brother-list">
-  {% for brother in p.1 %}
-  <li class="brother-list-item">
-    <a href="/brothers/{{brother.first_name}}_{{brother.last_name}}">
-      <h1 class="brother-name">{{ brother.first_name }} {{ brother.last_name }}</h1>
-      <span class="brother-pledgeyr">Email: {{ brother.email }}</span>
-    </a>
-  </li>
+  {% for p in brothers_alist %}
+    <div class="brothersListWrapper">
+      <div class="brothersPledgeYear">{{ p.0 }}'s</div>
+      <div class="brothersList">
+        {% for brother in p.1 %}
+          <a href="/brothers/{{brother.first_name}}_{{brother.last_name}}">{{ brother.first_name }} {{ brother.last_name }}</a>
+          {% if not forloop.last %}<span> | </span>{% endif %}
+        {% endfor %}
+      </div>
+    </div>
   {% endfor %}
-</ul>
-{% endfor %}
-
 {% else %}
-<p>No brothers listed.</p>
+  <p>No brothers listed.</p>
 {% endif %}
 
 {% endblock %}

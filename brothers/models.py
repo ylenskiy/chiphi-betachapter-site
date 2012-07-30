@@ -11,10 +11,9 @@ class Brother(models.Model):
     first_name  = models.CharField(max_length=100)
     last_name   = models.CharField(max_length=100)
     email       = models.EmailField()
-
     grad_year   = models.SmallIntegerField(verbose_name = 'Graduation year')
     pledge_year = models.SmallIntegerField(verbose_name = 'Pledge class year')
-    active      = models.BooleanField(verbose_name = 'Active status')
+    active      = models.BooleanField(verbose_name = 'Active status', default = True)
 
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name
