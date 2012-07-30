@@ -1,0 +1,10 @@
+* ChiPhi Beta-Chapter site documentation
+The CP site before this one became un-maintained and useless because no-one knew how it worked. This document contains non-obvious information regarding the site, and pointers to additional resources. Use it.
+** Dependencies
+*** Django v. 1.3
+This framework is used in a very standard way across the site. Anything not made clear in this document is made clear in [[https://docs.djangoproject.com/en/1.3/][django's documentation]].
+*** South v. 0.7.3
+** Important information
+- The brothers 'app', among other things, handles site registration
+- *Don't* delete *any* .sql files. If you need to change the database structure, use South or learn SQL
+- static/ holds things that the /developer/ produces. media/ holds things /users/ produce.
