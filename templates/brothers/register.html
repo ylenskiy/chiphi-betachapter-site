@@ -6,7 +6,7 @@
     <table><tbody>
       {% for field in uform.visible_fields %}
         <tr class="baseForm">
-          <td class="baseForm">{{ field.label_tag }}:</td>
+          <td class="baseForm">{{ field.label_tag }}{% if field.field.required %} *{% endif %}:</td>
           <td class="baseForm">{{ field }}
             {% if field.errors %}
               <span class="baseForm errorText">{% for error in  field.errors %}{{ error }} {% endfor %}</span>
@@ -20,7 +20,7 @@
       {% endfor %}
       {% for field in bform.visible_fields %}
         <tr class="baseForm">
-          <td class="baseForm">{{ field.label_tag }}:</td>
+          <td class="baseForm">{{ field.label_tag }}{% if field.field.required %} *{% else %} [Optional]{% endif %}:</td>
           <td class="baseForm">{{ field }}
             {% if field.errors %}
               <span class="baseForm errorText">{% for error in  field.errors %}{{ error }} {% endfor %}</span>
