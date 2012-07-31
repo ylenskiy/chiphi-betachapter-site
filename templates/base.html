@@ -33,12 +33,14 @@
       </div>
     </div>
 
-    <div class="baseContent cf">
-        {% block content %}{% endblock %}
-    </div>
-    <div align="center" class="baseFooter">
-      <a href="{% url login %}">Login</a> | 
-      <a href="{% url brothers %}">About Us</a>
+    <div class="baseContainer cf">
+      <div class="baseContent cf">
+         {% block content %}{% endblock %}
+      </div>
+      <div align="center" class="baseFooter">
+        <a href="{% url login %}">Login</a> | 
+        <a href="{% url brothers %}">About Us</a>
+      </div>
     </div>
   </body>
 </html>
