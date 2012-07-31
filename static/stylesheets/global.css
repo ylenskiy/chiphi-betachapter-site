@@ -91,7 +91,6 @@ div.baseContent {
   border: solid #000;
   border-width: 0 1px;
   width:700px;
-  min-height:100%;
   position:relative;
   z-index:4;
   -moz-box-shadow: 0 0 10px #000;
