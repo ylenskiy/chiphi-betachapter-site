@@ -21,6 +21,9 @@ class Brother(models.Model):
     active      = models.BooleanField(verbose_name = 'Active status', default = True)
 
     portrait    = models.FileField(upload_to=getImageFileName, blank=True)
+    hometown    = models.CharField(max_length=200, blank=True)
+    majors      = models.CharField(max_length=300, verbose_name = 'Major(s)', blank=True)
+    profile     = models.TextField(verbose_name = 'Optional bio/interests description', blank=True)
 
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name
