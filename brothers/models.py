@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -24,6 +25,13 @@ class Brother(models.Model):
     hometown    = models.CharField(max_length=200, blank=True)
     majors      = models.CharField(max_length=300, verbose_name = 'Major(s)', blank=True)
     profile     = models.TextField(verbose_name = 'Optional bio/interests description', blank=True)
+
+    def getPortraitUrl(self):
+        from os.path import join
+        if self.portrait.name:
+            return self.portrait.url
+        else:
+            return join(settings.STATIC_URL, "images/default.jpg")
 
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name
