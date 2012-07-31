@@ -1,0 +1,13 @@
+/* Utility css classes for fixing random bugs */
+
+/* Class for divs that need to completely wrap floated content */
+.cf:before, .cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.cf:after {
+    clear: both;
+}
+.cf {
+    *zoom: 1;
+}

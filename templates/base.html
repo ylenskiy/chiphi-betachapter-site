@@ -1,6 +1,7 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}stylesheets/global.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/utilities.css" type="text/css" />
     {% block stylesheets %}{% endblock %}
     <title>{% block title %}Chi Phi Beta Chapter{% endblock %}</title>
   </head>
@@ -32,12 +33,12 @@
       </div>
     </div>
 
-    <div class="baseContent">
-      {% block content %}{% endblock %}
-      <div align="center" class="baseFooter">
-         <a href="{% url login %}">Login</a> | 
-         <a href="{% url brothers %}">About Us</a>
-      </div>
+    <div class="baseContent cf">
+        {% block content %}{% endblock %}
+    </div>
+    <div align="center" class="baseFooter">
+      <a href="{% url login %}">Login</a> | 
+      <a href="{% url brothers %}">About Us</a>
     </div>
   </body>
 </html>
