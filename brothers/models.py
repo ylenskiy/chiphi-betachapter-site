@@ -21,10 +21,12 @@ class Brother(models.Model):
     pledge_year = models.SmallIntegerField(verbose_name = 'Pledge class year')
     active      = models.BooleanField(verbose_name = 'Active status', default = True)
 
-    portrait    = models.FileField(upload_to=getImageFileName, blank=True)
-    hometown    = models.CharField(max_length=200, blank=True)
-    majors      = models.CharField(max_length=300, verbose_name = 'Major(s)', blank=True)
-    profile     = models.TextField(verbose_name = 'Optional bio/interests description', blank=True)
+    # Optional fields
+    portrait          = models.FileField(upload_to=getImageFileName, blank=True)
+    officer_positions = models.CharField(max_length=200, blank=True)
+    hometown          = models.CharField(max_length=200, blank=True)
+    majors            = models.CharField(max_length=300, verbose_name = 'Major(s)', blank=True)
+    profile           = models.TextField(verbose_name = 'Bio and interests', blank=True)
 
     def getPortraitUrl(self):
         from os.path import join

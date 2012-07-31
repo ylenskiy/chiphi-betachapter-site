@@ -1,8 +1,31 @@
 {% extends "brothers/base.html" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/brother-details.css" type="text/css" />
+{% endblock %}
+
 {% block content %}
-<h1>{{ brother.first_name }} {{ brother.last_name }}</h1>
-<p>Pledge year: {{ brother.pledge_year }}</p>
-<p>Graduation year: {{ brother.grad_year }}</p>
-<p>Email: {{ brother.email }}</p>
-<img src="{{ brother.getPortraitUrl }}" alt="Picture of {{ brother.first_name }} {{ brother.last_name }}" />
+<div class="cf" id="required-info">
+  <div id="brother-portrait">
+    <img id="brother-portrait" src="{{ brother.getPortraitUrl }}" alt="Picture of {{ brother.first_name }} {{ brother.last_name }}" />
+  </div>
+  <h1>{{ brother.first_name }} {{ brother.last_name }}</h1>
+  <p>Pledge year: {{ brother.pledge_year }}</p>
+  <p>Graduation year: {{ brother.grad_year }}</p>
+  <p>Email: {{ brother.email }}</p>
+</div>
+<div id="optional-info">
+  {% if brother.officer_positions %}
+  <p>Officer positions: {{ brother.officer_positions }}</p>
+  {% endif %}
+  {% if brother.hometown %}
+  <p>Hometown: {{ brother.hometown }}</p>
+  {% endif %}
+  {% if brother.majors %}
+  <p>Major: {{ brother.majors }}</p>
+  {% endif %}
+  {% if brothers.profile %}
+  <p>About me: {{ brothers.profile }}</p>
+  {% endif %}
+</div>
 {% endblock %}
