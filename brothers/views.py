@@ -28,7 +28,7 @@ def details(request, first_name, last_name):
 def register(request):
     if request.method == "POST":
         uform = UserCreationForm(request.POST, instance=User())
-        bform = BrotherEditForm(request.POST, instance=Brother())
+        bform = BrotherEditForm(request.POST, request.FILES, instance=Brother())
         if uform.is_valid() and bform.is_valid():
             user         = uform.save()
             brother      = bform.save(commit=False)
@@ -48,7 +48,7 @@ def register(request):
 def edit(request):
     brother = request.user.get_profile()
     if request.method == "POST":
-        form = BrotherEditForm(request.POST, instance = brother)
+        form = BrotherEditForm(request.POST, request.FILES, instance = brother)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('edit')

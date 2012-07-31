@@ -4,4 +4,5 @@
 <p>Pledge year: {{ brother.pledge_year }}</p>
 <p>Graduation year: {{ brother.grad_year }}</p>
 <p>Email: {{ brother.email }}</p>
+<img src="{% if brother.portrait.name %}{{ brother.portrait.url }}{% else %}{{ STATIC_URL }}/images/default.jpg{% endif %}" alt="Picture of {{ brother.first_name }} {{ brother.last_name }}" />
 {% endblock %}

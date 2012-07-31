@@ -5,6 +5,11 @@ from django.dispatch import receiver
 
 from django.forms import ModelForm
 
+def getImageFileName(instance, filename):
+    from os.path import splitext,join
+    ext = splitext(filename)[-1]
+    return join('portraits', str(instance.pledge_year), instance.first_name + '_' + instance.last_name + ext)
+
 class Brother(models.Model):
     user        = models.OneToOneField(User, primary_key = True, editable = False)
 
@@ -14,6 +19,8 @@ class Brother(models.Model):
     grad_year   = models.SmallIntegerField(verbose_name = 'Graduation year')
     pledge_year = models.SmallIntegerField(verbose_name = 'Pledge class year')
     active      = models.BooleanField(verbose_name = 'Active status', default = True)
+
+    portrait    = models.FileField(upload_to=getImageFileName, blank=True)
 
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name

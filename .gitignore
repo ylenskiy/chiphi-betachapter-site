@@ -2,5 +2,8 @@
 *.sql
 *~
 
+collected-static
+media
+
 */migrations
 .ropeproject
