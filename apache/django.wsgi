@@ -3,7 +3,7 @@ from os.path import dirname,realpath
 
 sys.path.append("/home/termchair/www/chiphi-betachapter-site")
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'chiphi-betachapter-site.settings'
 
 import django.core.handlers.wsgi
 
