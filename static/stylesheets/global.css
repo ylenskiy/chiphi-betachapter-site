@@ -27,7 +27,7 @@ body {
   /* For IE 8 */
   -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000')";
   filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000');
-  z-index: 5;
+  z-index: 6;
   position:absolute;
 }
 
@@ -92,10 +92,9 @@ div.baseContainer {
   clear:both;
   display:block;
   background: #fff;
-  padding: 40px 20px 10px;
+  padding: 40px 20px 60px;
   margin-top: 20px;
-  border: solid #000;
-  border-width: 0 1px;
+  border: 1px solid #000;
   width:700px;
   min-height:100%;
   height:auto !important;
@@ -118,7 +117,6 @@ div.baseContainer {
   width:100%;
   margin-top: 20px;
   z-index:5;
-  position:absolute;
 }
 
 .baseFooter a {
