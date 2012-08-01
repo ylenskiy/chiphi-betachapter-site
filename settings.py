@@ -2,7 +2,7 @@
 
 from os.path import join,realpath,dirname
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 BASE_WWW_DIR = dirname(realpath(__file__))
