@@ -1,7 +1,8 @@
 * { margin: 0; padding: 0; font-family: sans-serif; }
 
-html body {
+body {
   background: #eee;
+  height:100%;
 }
 
 .baseBanner {
@@ -36,6 +37,10 @@ div.baseNavLinkList {
   list-style:none;
   position:relative;
   left:50%;
+}
+
+div.baseNav a {
+    text-decoration:none;
 }
 
 div.baseNav a span {
@@ -81,7 +86,8 @@ div.baseNav a span.active {
   color: white;
 }
 
-div.baseContent {
+div.baseContainer {
+  position: relative;
   margin:0 auto;
   clear:both;
   display:block;
@@ -90,7 +96,9 @@ div.baseContent {
   margin-top: 20px;
   border: 1px solid #000;
   width:700px;
-  position:relative;
+  min-height:100%;
+  height:auto !important;
+  height:100%;
   z-index:4;
   -moz-box-shadow: 0 0 10px #000;
   -webkit-box-shadow: 0 0 10px #000;
@@ -99,8 +107,12 @@ div.baseContent {
   -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000')";
 }
 
+.baseContent {
+    clear:both;
+    display:block;
+}
+
 .baseFooter {
-  position:absolute;
   bottom:10px;
   width:100%;
   margin-top: 20px;
