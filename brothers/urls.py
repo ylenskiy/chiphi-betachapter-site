@@ -6,6 +6,7 @@ urlpatterns = patterns(
     url(r'^(?P<first_name>.+)_(?P<last_name>.+)$', 'details'),
     url(r'^register', 'register'),
     url(r'^edit', 'edit', name='edit_profile'),
+    url(r'^generate', 'generate'),
     )
 
 urlpatterns += patterns(
