@@ -14,7 +14,7 @@ urlpatterns += patterns(
     url(r'^login', 'django.contrib.auth.views.login',
         {'template_name': 'brothers/login.html'}, name='login'),
     url(r'^change-password', 'django.contrib.auth.views.password_change',
-        {'template_name': 'brothers/change-password.html', 'post_change_redirect': 'brothers/edit'}, name='change-password'),
+        {'template_name': 'brothers/change-password.html', 'post_change_redirect': 'edit'}, name='change-password'),
     url(r'^logout', 'django.contrib.auth.views.logout', 
         {'template_name': 'brothers/logout.html'}, name='logout'),
     )
