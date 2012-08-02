@@ -1,31 +1,50 @@
 {% extends "brothers/base.html" %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/brother-details.css" type="text/css" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/brother-details.css" type="text/css" />
 {% endblock %}
 
 {% block content %}
-<div class="cf" id="required-info">
-  <div id="brother-portrait">
-    <img id="brother-portrait" src="{{ brother.getPortraitUrl }}" alt="Picture of {{ brother.first_name }} {{ brother.last_name }}" />
+<div class="cf">
+  <div class="brotherDetailsHeader">
+    <span class="brotherPhotoWrapper">
+      <img class="brotherPhoto" src="{{ brother.getPortraitUrl }}" alt="Photo of {{ brother.first_name }} {{ brother.last_name }}" />
+    </span>
+    <div class="brotherHeaderText">
+      <span class="brotherName">{{ brother.first_name }} {{ brother.last_name }}</span>
+      {% if brother.officer_positions %}
+        <br /><span class="brotherQuickInfo">Officer Position: {{ brother.officer_positions }}</span>
+      {% endif %}
+      <br /><span class="brotherQuickInfo">Email: {{ brother.email }}</span>
+    </div>
   </div>
-  <h1>{{ brother.first_name }} {{ brother.last_name }}</h1>
-  <p>Pledge year: {{ brother.pledge_year }}</p>
-  <p>Graduation year: {{ brother.grad_year }}</p>
-  <p>Email: {{ brother.email }}</p>
-</div>
-<div id="optional-info">
-  {% if brother.officer_positions %}
-  <p>Officer positions: {{ brother.officer_positions }}</p>
-  {% endif %}
-  {% if brother.hometown %}
-  <p>Hometown: {{ brother.hometown }}</p>
-  {% endif %}
-  {% if brother.majors %}
-  <p>Major: {{ brother.majors }}</p>
-  {% endif %}
-  {% if brother.profile %}
-  <p>About me: {{ brother.profile }}</p>
-  {% endif %}
+  <table><tbody>
+    <tr class="brotherInfoTableRow">
+      <td class="brotherInfoTableColumnLeft">Pledge year</td>
+      <td class="brotherInfoTableColumnRight">{{ brother.pledge_year }}
+    </tr>
+    <tr class="brotherInfoTableRow">
+      <td class="brotherInfoTableColumnLeft">Graduation year</td>
+      <td class="brotherInfoTableColumnRight">{{ brother.grad_year }}
+    </tr>
+    {% if brother.hometown %}
+      <tr class="brotherInfoTableRow">
+        <td class="brotherInfoTableColumnLeft">Hometown</td>
+        <td class="brotherInfoTableColumnRight">{{ brother.hometown }}
+      </tr>
+    {% endif %}
+    {% if brother.majors %}
+      <tr class="brotherInfoTableRow">
+        <td class="brotherInfoTableColumnLeft">Major</td>
+        <td class="brotherInfoTableColumnRight">{{ brother.majors }}
+      </tr>
+    {% endif %}
+    {% if brother.profile %}
+      <tr class="brotherInfoTableRow">
+        <td class="brotherInfoTableColumnLeft">About me</td>
+        <td class="brotherInfoTableColumnRight">{{ brother.profile }}
+      </tr>
+    {% endif %}
+  </tbody></table>
 </div>
 {% endblock %}

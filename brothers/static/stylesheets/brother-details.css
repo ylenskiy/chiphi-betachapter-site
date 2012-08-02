@@ -1,21 +1,51 @@
-img#brother-portrait {
-    width:7em;
+span.brotherPhotoWrapper {
+  float:left;
+  width: 110px;
+  height: 110px;
+  overflow:hidden;
 }
 
-div#brother-portrait {
-    float:left;
-    width:7em;
-    height:7em;
-    overflow:hidden;
-    margin:0 1em;
+img.brotherPhoto {
+  width: 110px;
+  display: block;
 }
 
-div#required-info {
-    clear:both;
-    display:block;
-
-    padding:0 0 .3em 0;
-    margin: 0 0 .3em 0;
-    border-bottom-style:solid;    
-    border-width:.1em;
+span.brotherName {
+  font-size: 25px;
+  font-weight: bold;
+  width: auto;
+  padding: 0 20px 10px;
+  display: inline-block;
 }
+
+span.brotherQuickInfo {
+  width: auto;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+div.brotherHeaderText {
+  width: auto;
+  height: 110px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+div.brotherDetailsHeader {
+  height: 110px;
+  padding: 20px;
+}
+
+table.brotherInfoTable {
+  margin: 20px;
+}
+
+tr.brotherInfoTableRow > td {
+  padding: 10px 20px;
+}
+
+td.brotherInfoTableColumnLeft {
+  font-weight: bold;
+  width: 25%;
+}
+
