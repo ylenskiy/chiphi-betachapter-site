@@ -47,7 +47,7 @@ ul#baseNavList > li:first-child {
     border-left:1px solid #000;
 }
 
-ul#baseNavList li.active a {
+ul#baseNavList li.active > a {
     background: #962c21; /* for non-css3 browsers */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#962c21', endColorstr='#681f17'); /* IE */
     background: -webkit-gradient(linear, left top, left bottom, from(#962c21), to(#681f17)); /* webkit*/
@@ -55,7 +55,7 @@ ul#baseNavList li.active a {
     color: #fff;
 }
 
-ul#baseNavList li a:hover {
+ul#baseNavList li > a:hover {
     color:white;
     background: #bcbcbc; /* for non-css3 browsers */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#575757', endColorstr='#9a9a9a'); /* IE */
@@ -71,6 +71,7 @@ ul#baseNavList ul {
     position:absolute;
     text-align:left;
     left:-999999px;
+    margin-left:-1px;
 
     border: solid #000;
     border-width: 0 1px 1px;
@@ -84,6 +85,7 @@ ul#baseNavList ul {
 
 ul#baseNavList ul li {
     float:none;
+    min-width:5em;
     width:auto;
 }
 
@@ -98,11 +100,17 @@ ul#baseNavList li:hover ul {
     left:0;
 }
 
+ul#baseNavList li ul a:hover {
+    background:#777;
+}
+
 /* End navigation menu */
 
 #baseNavMenuBG {
   width:100%;
   float:left;
+  position:absolute;
+  z-index:6;
   max-height: 40px;
   border: solid #000;
   border-width: 1px 0;
