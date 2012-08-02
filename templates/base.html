@@ -7,50 +7,52 @@
   </head>
 
   <body>
-    <div id="baseNavContainer">
-      <div class="baseBanner" align="center"></div>
-      <div id="baseNavListCentering"><div>
-        <ul id="baseNavList">
-          <li class="{% block menu_home %}{% endblock %}">
-            <a href="{% url home %}">Home</a>
-          </li>
-          <li class="{% block menu_about %}{% endblock %}">
-            <a href="{% url about %}">About Us</a>
-            <ul>
-              <li><a href="{% url about %}">Our Philosophy</a></li>
-              <li><a href="{% url about %}">The Chapter House</a></li>
-              <li><a href="{% url about %}">Chi Phi History</a></li>
-              <li><a href="{% url about %}">Beta Chapter History</a></li>
+    <div id="baseNavContainer cf">
+      <div id="baseBanner" align="center"></div>
+      <div id="baseNavMenuBG">
+        <div id="baseNavListCentering"><div>
+            <ul id="baseNavList">
+              <li class="{% block menu_home %}{% endblock %}">
+                <a href="{% url home %}">Home</a>
+              </li>
+              <li class="{% block menu_about %}{% endblock %}">
+                <a href="{% url about %}">About Us</a>
+                <ul>
+                  <li><a href="{% url about %}">Our Philosophy</a></li>
+                  <li><a href="{% url about %}">The Chapter House</a></li>
+                  <li><a href="{% url about %}">Chi Phi History</a></li>
+                  <li><a href="{% url about %}">Beta Chapter History</a></li>
+                </ul>
+              </li>
+              <li class="{% block menu_brothers %}{% endblock %}">
+                <a href="{% url brothers %}">Brothers</a>
+              </li>
+              <li class="{% block menu_rush %}{% endblock %}">
+                <a href="{% url rush %}">Rush</a>
+                <ul>
+                  <li><a href="{% url rush %}">Rushing Chi Phi</a></li>
+                  <li><a href="{% url rush %}">Rush Week Schedule</a></li>
+                </ul>
+              </li>
+              <li class="{% block menu_contact %}{% endblock %}">
+                <a href="{% url contact %}">Contact</a>
+                <ul>
+                  <li><a href="{% url contact %}">General</a></li>
+                  <li><a href="{% url contact %}">Parents</a></li>
+                  <li><a href="{% url contact %}">Alumni</a></li>
+                </ul>
+              </li>
+              {% if user.is_authenticated %}
+              <li class="{% block menu_edit_profile %}{% endblock %}">
+                <a href="{% url edit_profile %}">Edit Profile</a>
+              </li>
+              <li class="{% block menu_logout %}{% endblock %}">
+                <a href="{% url logout %}">Logout</a>
+              </li>
+              {% endif %}
             </ul>
-          </li>
-          <li class="{% block menu_brothers %}{% endblock %}">
-            <a href="{% url brothers %}">Brothers</a>
-          </li>
-          <li class="{% block menu_rush %}{% endblock %}">
-            <a href="{% url rush %}">Rush</a>
-            <ul>
-              <li><a href="{% url rush %}">Rushing Chi Phi</a></li>
-              <li><a href="{% url rush %}">Rush Week Schedule</a></li>
-            </ul>
-          </li>
-          <li class="{% block menu_contact %}{% endblock %}">
-            <a href="{% url contact %}">Contact</a>
-            <ul>
-              <li><a href="{% url contact %}">General</a></li>
-              <li><a href="{% url contact %}">Parents</a></li>
-              <li><a href="{% url contact %}">Alumni</a></li>
-            </ul>
-          </li>
-          {% if user.is_authenticated %}
-          <li class="{% block menu_edit_profile %}{% endblock %}">
-            <a href="{% url edit_profile %}">Edit Profile</a>
-          </li>
-          <li class="{% block menu_logout %}{% endblock %}">
-            <a href="{% url logout %}">Logout</a>
-          </li>
-          {% endif %}
-        </ul>
-      </div></div>
+        </div></div>
+      </div>
     </div>
 
     <div class="baseContainer cf">
