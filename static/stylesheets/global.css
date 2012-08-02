@@ -5,6 +5,103 @@ body {
   height:100%;
 }
 
+/* Navigation menu w/CSS dropdown */
+
+div#baseNavListCentering {
+    float:left;
+    left:50%;
+    position:relative;
+    z-index:6;
+}
+
+div#baseNavListCentering > div:first-child {
+    float:left;
+    left:-50%;
+    position:relative;
+}
+
+ul#baseNavList {
+    list-style:none;
+    text-align:center;
+    z-index:6;
+}
+
+ul#baseNavList a {
+    display:block;
+    text-decoration:none;
+
+    color:black;
+    padding:.5em 1em;;
+}
+
+ul#baseNavList li {
+    float:left;
+    width:auto;
+    position:relative;
+
+    border-right:1px solid #000;
+    -moz-box-shadow:    inset 0 0 1px #000000;
+    -webkit-box-shadow: inset 0 0 1px #000000;
+    box-shadow:         inset 0 0 1px #000000;
+}
+
+ul#baseNavList > li:first-child {
+    border-left:1px solid #000;
+}
+
+ul#baseNavList li.active a {
+    background: #962c21; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#962c21', endColorstr='#681f17'); /* IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#962c21), to(#681f17)); /* webkit*/
+    background: -moz-linear-gradient(top,  #962c21,  #681f17); /* firefox */
+    color: #fff;
+}
+
+ul#baseNavList li a:hover {
+    color:white;
+    background: #bcbcbc; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#575757', endColorstr='#9a9a9a'); /* IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#575757), to(#9a9a9a)); /* webkit*/
+    background: -moz-linear-gradient(top,  #575757,  #9a9a9a); /* firefox */
+}
+
+/* Sub-menu specific */
+
+ul#baseNavList ul {
+    list-style:none;
+    display:block;
+    position:absolute;
+    text-align:left;
+    left:-999999px;
+
+    border: solid #000;
+    border-width: 0 1px 1px;
+    -moz-box-shadow: 0 0 7px #000;
+    -webkit-box-shadow: 0 0 7px #000;
+    box-shadow: 0 0 7px #000;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000')";
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000');
+}
+
+ul#baseNavList ul li {
+    float:none;
+    width:auto;
+}
+
+ul#baseNavList ul a {
+    white-space:nowrap;
+
+    background: #ddd;
+    border-top: 1px solid #000;
+}
+
+ul#baseNavList li:hover ul {
+    left:0;
+}
+
+/* End navigation menu */
+
 .baseBanner {
   margin: auto;
   min-height: 150px;
@@ -42,100 +139,6 @@ body {
   /* For IE 8 */
   -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000')";
   filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000');
-  z-index: 6;
-  position:absolute;
-}
-
-div.baseNavLinkList {
-  clear:left;
-  float:left;
-  list-style:none;
-  position:relative;
-  left:50%;
-}
-
-div.baseNav span a {
-  text-decoration:none;
-}
-
-div.baseNav span a.baseNavMain {
-  display: inline-block;
-  position:relative;
-  right:50%;
-  float:left;
-  padding: 10px 0;
-  text-align:center;
-  border-right:1px solid #000;
-  min-width:100px;
-  -moz-box-shadow:    inset 0 0 1px #000000;
-  -webkit-box-shadow: inset 0 0 1px #000000;
-  box-shadow:         inset 0 0 1px #000000;
-}
-
-div.baseNav span.baseIdFirstInNav a.baseNavMain {
-  border-left: 1px solid #000;
-}
-div.baseNavSub {
-  display:inline-block;
-}
-
-div.baseNav span a.baseNavMain {
-  display:block;
-  color: #000;
-  text-decoration:none;
-  -moz-box-shadow:    inset 0 0 1px #000000;
-  -webkit-box-shadow: inset 0 0 1px #000000;
-  box-shadow:         inset 0 0 1px #000000;
-}
-
-div.baseNav span:hover a.baseNavMain {
-  background: #bcbcbc; /* for non-css3 browsers */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#575757', endColorstr='#9a9a9a'); /* IE */
-  background: -webkit-gradient(linear, left top, left bottom, from(#575757), to(#9a9a9a)); /* webkit*/
-  background: -moz-linear-gradient(top,  #575757,  #9a9a9a); /* firefox */
-}
-
-div.baseNav span.active a.baseNavMain {
-  background: #962c21; /* for non-css3 browsers */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#962c21', endColorstr='#681f17'); /* IE */
-  background: -webkit-gradient(linear, left top, left bottom, from(#962c21), to(#681f17)); /* webkit*/
-  background: -moz-linear-gradient(top,  #962c21,  #681f17); /* firefox */
-  color: #fff;
-}
-
-/* submenu styles */
-div.baseNav span div.baseNavSub ul {
-  position: absolute;
-  left: 0;
-  top: 39px;
-  display: none;
-  min-width: 100px;
-  margin: 0 0 0 -1px;
-  list-style: none;
-  z-index: 3;
-  border: solid #000;
-  border-width: 0 1px 1px;
-  -moz-box-shadow: 0 0 7px #000;
-  -webkit-box-shadow: 0 0 7px #000;
-  box-shadow: 0 0 7px #000;
-  /* For IE 8 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000')";
-  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000');
-}
-
-div.baseNav span div.baseNavSub ul li a {
-  display: block;
-  min-height: 15px;
-  padding: 8px 5px;
-  color: #000;
-  margin-top: -1px;
-  background: #ddd;
-  border-top: 1px solid #000;
-}
-
-div.baseNav span div.baseNavSub ul li a:hover {
-  background: #666; /* for non-css3 browsers */
-  color: #fff;
 }
 
 div.baseContainer {
@@ -151,7 +154,6 @@ div.baseContainer {
   min-height:100%;
   height:auto !important;
   height:100%;
-  z-index:4;
   -moz-box-shadow: 0 0 10px #000;
   -webkit-box-shadow: 0 0 10px #000;
   box-shadow: 0 0 10px #000;
