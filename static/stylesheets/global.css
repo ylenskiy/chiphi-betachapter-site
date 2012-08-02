@@ -11,14 +11,14 @@ body {
   width: 100%;
   text-align: center;
   background: #fff;
-  background-image: url('/static/images/menu/banner.jpg');
-  background-image: -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(100,100,100,.4)), url('/static/images/menu/banner.jpg');
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0)), to(rgba(100,100,100,.4))), url('/static/images/menu/banner.jpg');
+  background-image: url('/static/images/menu/banner.png');
+  background-image: -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(100,100,100,.4)), url('/static/images/menu/banner.png');
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0)), to(rgba(100,100,100,.4))), url('/static/images/menu/banner.png');
   background-repeat: no-repeat;
-  background-image: -moz-linear-gradient(rgba(255,255,255,0), rgba(100,100,100,.4)), url('/static/images/menu/banner.jpg');
+  background-image: -moz-linear-gradient(rgba(255,255,255,0), rgba(100,100,100,.4)), url('/static/images/menu/banner.png');
   background-position: center;
   margin-bottom: 20px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000;
   -moz-box-shadow: 0 0 7px #000;
   -webkit-box-shadow: 0 0 7px #000;
   box-shadow: 0 0 7px #000;
@@ -30,7 +30,6 @@ body {
 .baseNav {
   width:100%;
   max-height: 40px;
-  overflow:hidden;
   border: solid #000;
   border-width: 1px 0;
   background: #bcbcbc; /* for non-css3 browsers */
@@ -55,11 +54,11 @@ div.baseNavLinkList {
   left:50%;
 }
 
-div.baseNav a {
-    text-decoration:none;
+div.baseNav span a {
+  text-decoration:none;
 }
 
-div.baseNav a span {
+div.baseNav span a.baseNavMain {
   display: inline-block;
   position:relative;
   right:50%;
@@ -73,33 +72,70 @@ div.baseNav a span {
   box-shadow:         inset 0 0 1px #000000;
 }
 
-div.baseNav a span.baseIdFirstInNav {
+div.baseNav span.baseIdFirstInNav a.baseNavMain {
   border-left: 1px solid #000;
 }
+div.baseNavSub {
+  display:inline-block;
+}
 
-div.baseNav a span {
+div.baseNav span a.baseNavMain {
   display:block;
-  color:black;
+  color: #000;
   text-decoration:none;
   -moz-box-shadow:    inset 0 0 1px #000000;
   -webkit-box-shadow: inset 0 0 1px #000000;
   box-shadow:         inset 0 0 1px #000000;
 }
 
-div.baseNav a:hover span {
-  background: #122e89;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#122e89', endColorstr='#0d2060'); /* IE */
-  background: -webkit-gradient(linear, left top, left bottom, from(#122e89), to(#0d2060)); /* webkit*/
-  background: -moz-linear-gradient(top,  #122e89,  #0d2060); /* firefox */
-  color: white;
+div.baseNav span:hover a.baseNavMain {
+  background: #bcbcbc; /* for non-css3 browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#575757', endColorstr='#9a9a9a'); /* IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#575757), to(#9a9a9a)); /* webkit*/
+  background: -moz-linear-gradient(top,  #575757,  #9a9a9a); /* firefox */
 }
 
-div.baseNav a span.active {
+div.baseNav span.active a.baseNavMain {
   background: #962c21; /* for non-css3 browsers */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#962c21', endColorstr='#681f17'); /* IE */
   background: -webkit-gradient(linear, left top, left bottom, from(#962c21), to(#681f17)); /* webkit*/
   background: -moz-linear-gradient(top,  #962c21,  #681f17); /* firefox */
-  color: white;
+  color: #fff;
+}
+
+/* submenu styles */
+div.baseNav span div.baseNavSub ul {
+  position: absolute;
+  left: 0;
+  top: 39px;
+  display: none;
+  min-width: 100px;
+  margin: 0 0 0 -1px;
+  list-style: none;
+  z-index: 3;
+  border: solid #000;
+  border-width: 0 1px 1px;
+  -moz-box-shadow: 0 0 7px #000;
+  -webkit-box-shadow: 0 0 7px #000;
+  box-shadow: 0 0 7px #000;
+  /* For IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000')";
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000');
+}
+
+div.baseNav span div.baseNavSub ul li a {
+  display: block;
+  min-height: 15px;
+  padding: 8px 5px;
+  color: #000;
+  margin-top: -1px;
+  background: #ddd;
+  border-top: 1px solid #000;
+}
+
+div.baseNav span div.baseNavSub ul li a:hover {
+  background: #666; /* for non-css3 browsers */
+  color: #fff;
 }
 
 div.baseContainer {
@@ -111,7 +147,7 @@ div.baseContainer {
   padding: 40px 20px 60px;
   margin-top: 40px;
   border: 1px solid #000;
-  width:700px;
+  width:75%;
   min-height:100%;
   height:auto !important;
   height:100%;
@@ -137,7 +173,7 @@ div.baseContainer {
 
 .baseFooter a {
   text-decoration: none;
-  color: black;
+  color: #000;
 }
 
 .baseFooter a:hover {
@@ -154,7 +190,7 @@ input[type=text], input[type=password] {
 
 input[type=submit], input[type=button] {
   padding: 5px 10px;
-  border: 1px solid black;
+  border: 1px solid #000;
   font-size: inherit;
   cursor: pointer;
   background: #dadada;
@@ -176,7 +212,7 @@ input[type=submit]:hover, input[type=button]:hover {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#962c21', endColorstr='#681f17'); /* IE */
   background: -webkit-gradient(linear, left top, left bottom, from(#962c21), to(#681f17)); /* webkit*/
   background: -moz-linear-gradient(top,  #962c21,  #681f17); /* firefox */
-  color: white;
+  color: #fff;
 }
 
 input[type=submit]:active, input[type=button]:active {

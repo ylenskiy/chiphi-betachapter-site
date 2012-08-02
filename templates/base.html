@@ -10,25 +10,49 @@
     <div class="baseBanner" align="center"></div>
     <div class="baseNav">
       <div class="baseNavLinkList">
-      <a href="{% url home %}">
-        <span class="baseIdFirstInNav {% block menu_home %}{% endblock %}">Home</span>
-      </a>
-      <a href="{% url brothers %}">
-        <span class="{% block menu_brothers %}{% endblock %}">Brothers</span>
-      </a>
-      <a href="{% url house %}">
-        <span class="{% block menu_house %}{% endblock %}">House</span>
-      </a>
-      <a href="{% url contact %}">
-        <span class="{% block menu_contact %}{% endblock %}">Contact</span>
-      </a>
+      <span class="baseIdFirstInNav {% block menu_home %}{% endblock %}">
+        <a class="baseNavMain" href="{% url home %}">Home</a>
+      </span>
+      <span class="{% block menu_about %}{% endblock %}">
+        <a class="baseNavMain" href="{% url about %}">About Us</a>
+        <div class="baseNavSub">
+          <ul>
+            <li><a href="{% url about %}">Our Philosophy</a></li>
+            <li><a href="{% url about %}">The Chapter House</a></li>
+            <li><a href="{% url about %}">Chi Phi History</a></li>
+            <li><a href="{% url about %}">Beta Chapter History</a></li>
+          </ul>
+        </div>
+      </span>
+      <span class="{% block menu_brothers %}{% endblock %}">
+        <a class="baseNavMain" href="{% url brothers %}">Brothers</a>
+      </span>
+      <span class="{% block menu_house %}{% endblock %}">
+        <a class="baseNavMain" href="{% url house %}">Rush</a>
+        <div class="baseNavSub">
+          <ul>
+            <li><a href="{% url house %}">Rushing Chi Phi</a></li>
+            <li><a href="{% url house %}">Rush Week Schedule</a></li>
+          </ul>
+        </div>
+      </span>
+      <span class="{% block menu_contact %}{% endblock %}">
+        <a class="baseNavMain" href="{% url contact %}">Contact</a>
+        <div class="baseNavSub">
+          <ul>
+            <li><a href="{% url contact %}">General</a></li>
+            <li><a href="{% url contact %}">Parents</a></li>
+            <li><a href="{% url contact %}">Alumni</a></li>
+          </ul>
+        </div>
+      </span>
       {% if user.is_authenticated %}
-        <a href="{% url edit_profile %}">
-          <span class="{% block menu_edit_profile %}{% endblock %}">Edit Profile</span>
-        </a>
-        <a href="{% url logout %}">
-          <span class="{% block menu_logout %}{% endblock %}">Logout</span>
-        </a>
+        <span class="{% block menu_edit_profile %}{% endblock %}">
+          <a class="baseNavMain" href="{% url Edit Profile %}">Edit Profile</a>
+        </span>
+        <span class="{% block menu_logout %}{% endblock %}">
+          <a class="baseNavMain" href="{% url logout %}">Logout</a>
+        </span>
       {% endif %}
       </div>
     </div>
@@ -43,4 +67,7 @@
       </div>
     </div>
   </body>
+  <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/base.js"></script>
+  {% block javascripts %}{% endblock %}
 </html>
