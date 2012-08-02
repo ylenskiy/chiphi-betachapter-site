@@ -1,14 +1,30 @@
 * { margin: 0; padding: 0; font-family: sans-serif; }
 
 body {
-  background: #eee;
+  background: #ddd;
   height:100%;
 }
 
 .baseBanner {
+  margin: auto;
+  min-height: 150px;
   width: 100%;
   text-align: center;
-  padding: 20px 0;
+  background: #fff;
+  background-image: url('/static/images/menu/banner.jpg');
+  background-image: -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(100,100,100,.4)), url('/static/images/menu/banner.jpg');
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0)), to(rgba(100,100,100,.4))), url('/static/images/menu/banner.jpg');
+  background-repeat: no-repeat;
+  background-image: -moz-linear-gradient(rgba(255,255,255,0), rgba(100,100,100,.4)), url('/static/images/menu/banner.jpg');
+  background-position: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+  -moz-box-shadow: 0 0 7px #000;
+  -webkit-box-shadow: 0 0 7px #000;
+  box-shadow: 0 0 7px #000;
+  /* For IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000')";
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000000');
 }
 
 .baseNav {
@@ -93,7 +109,7 @@ div.baseContainer {
   display:block;
   background: #fff;
   padding: 40px 20px 60px;
-  margin-top: 20px;
+  margin-top: 40px;
   border: 1px solid #000;
   width:700px;
   min-height:100%;
@@ -115,7 +131,7 @@ div.baseContainer {
 .baseFooter {
   bottom:10px;
   width:100%;
-  margin-top: 20px;
+  margin-top: 50px;
   z-index:5;
 }
 
