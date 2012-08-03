@@ -3,6 +3,7 @@ from django.conf.urls.defaults import patterns, include, url
 urlpatterns = patterns(
     'brothers.views',
     url(r'^$', 'index', name="brothers"),
+    url(r'^alums$', 'index', {'active': False}, name="alums"),
     url(r'^(?P<first_name>.+)_(?P<last_name>.+)$', 'details'),
     url(r'^register', 'register'),
     url(r'^edit', 'edit', name='edit_profile'),

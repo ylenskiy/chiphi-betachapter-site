@@ -26,6 +26,10 @@
               </li>
               <li class="{% block menu_brothers %}{% endblock %}">
                 <a href="{% url brothers %}">Brothers</a>
+                <ul>
+                  <li><a href="{% url brothers %}">Actives</a></li>
+                  <li><a href="{% url alums %}">Alums</a></li>
+                </ul>
               </li>
               <li class="{% block menu_rush %}{% endblock %}">
                 <a href="{% url rush %}">Rush</a>
@@ -36,11 +40,6 @@
               </li>
               <li class="{% block menu_contact %}{% endblock %}">
                 <a href="{% url contact %}">Contact</a>
-                <ul>
-                  <li><a href="{% url contact %}">General</a></li>
-                  <li><a href="{% url contact %}">Parents</a></li>
-                  <li><a href="{% url contact %}">Alumni</a></li>
-                </ul>
               </li>
               {% if user.is_authenticated %}
               <li class="{% block menu_edit_profile %}{% endblock %}">
@@ -59,9 +58,8 @@
       <div class="baseContent cf">
          {% block content %}{% endblock %}
       </div>
-      <div align="center" class="baseFooter">
-        <a href="{% url login %}">Login</a> | 
-        <a href="{% url brothers %}">About Us</a>
+      <div class="baseFooter cf">
+         {% block footer %}{% endblock %}
       </div>
     </div>
   </body>

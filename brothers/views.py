@@ -12,12 +12,12 @@ from brothers.models import Brother,BrotherEditForm
 import sys
 import csv
 
-def index(request):
+def index(request, active=True):
     """Active brother listing."""
     currentPledgeYears = sorted(
         list(
             set(
-                [b.pledge_year for b in Brother.objects.filter(active = True)]
+                [b.pledge_year for b in Brother.objects.filter(active = active)]
                 )), reverse = False)
 
     return render(request, 'brothers/index.html',
