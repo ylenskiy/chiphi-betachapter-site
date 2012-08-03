@@ -1,5 +1,7 @@
 *.pyc
 *.sql
+*.swo
+*.swp
 *~
 
 collected-static
