@@ -12,8 +12,12 @@
     </span>
     <div class="brotherHeaderText">
       <span class="brotherName">{{ brother.first_name }} {{ brother.last_name }}</span>
-      {% if brother.officer_positions %}
-        <br /><span class="brotherQuickInfo">Officer Position: {{ brother.officer_positions }}</span>
+      {% if brother.isOfficer %}
+        <br /><span class="brotherQuickInfo">Officer positions: 
+        {% for p in brother.officer_positions.all %}
+          {{ p }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+        </span>
       {% endif %}
       <br /><span class="brotherQuickInfo">Email: {{ brother.email }}</span>
     </div>

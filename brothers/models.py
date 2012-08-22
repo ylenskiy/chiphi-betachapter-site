@@ -6,6 +6,12 @@ from django.dispatch import receiver
 
 from django.forms import ModelForm
 
+class Officer(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(verbose_name = "Officer position description and responsibilities")
+
+    def __unicode__(self): return self.name
+
 def getImageFileName(instance, filename):
     from os.path import splitext,join
     ext = splitext(filename)[-1]
@@ -22,11 +28,12 @@ class Brother(models.Model):
     active      = models.BooleanField(verbose_name = 'Active status', default = True)
 
     # Optional fields
-    portrait          = models.FileField(upload_to=getImageFileName, blank=True)
-    officer_positions = models.CharField(max_length=200, blank=True)
-    hometown          = models.CharField(max_length=200, blank=True)
+    officer_positions = models.ManyToManyField(Officer, blank=True)
+
+    portrait          = models.FileField(upload_to=getImageFileName,                blank=True)
+    hometown          = models.CharField(max_length=200,                            blank=True)
     majors            = models.CharField(max_length=300, verbose_name = 'Major(s)', blank=True)
-    profile           = models.TextField(verbose_name = 'Bio and interests', blank=True)
+    profile           = models.TextField(verbose_name = 'Bio and interests',        blank=True)
 
     def getPortraitUrl(self):
         from os.path import join
@@ -34,6 +41,8 @@ class Brother(models.Model):
             return self.portrait.url
         else:
             return join(settings.STATIC_URL, "images/default.jpg")
+
+    def isOfficer(self): return self.officer_positions.count() > 0
 
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name
