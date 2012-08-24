@@ -4,6 +4,7 @@
 }
 
 div.brothersListWrapper {
+    clear:both;
   margin: 20px 0;
 }
 
@@ -33,6 +34,7 @@ div.brothersList li {
     list-style:none;
     float:left;
     margin: .3em;
+    width:7em;
 }
 
 div.brothersList p.brotherName {
