@@ -11,10 +11,17 @@
     <div class="brothersListWrapper">
       <div class="brothersPledgeYear">{{ p.0 }}'s</div>
       <div class="brothersList">
+        <ul>
         {% for brother in p.1 %}
-          <a href="/brothers/{{brother.first_name}}_{{brother.last_name}}">{{ brother.first_name }} {{ brother.last_name }}</a>
-          {% if not forloop.last %}<span> | </span>{% endif %}
+        <li>
+          <a class="cf" href="/brothers/{{brother.first_name}}_{{brother.last_name}}">
+            <img src="{{ brother.getPortraitUrl }}" class="brotherPicture"
+                 alt="Picture of {{ brother.first_name }} {{ brother.last_name }}." />
+            <p class="brotherName">{{ brother.first_name }} {{ brother.last_name }}</p>
+          </a>
+        </li>
         {% endfor %}
+        </ul>
       </div>
     </div>
   {% endfor %}
