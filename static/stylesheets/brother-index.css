@@ -35,6 +35,7 @@ div.brothersList li {
     float:left;
     margin: .3em;
     width:7em;
+    height:10em;
 }
 
 div.brothersList p.brotherName {
