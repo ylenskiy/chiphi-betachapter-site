@@ -21,7 +21,7 @@ def index(request, active=True):
                 )), reverse = False)
 
     return render(request, 'brothers/index.html',
-                  {'brothers_alist': [(yr, Brother.objects.filter(pledge_year = yr))
+                  {'brothers_alist': [(yr, Brother.objects.filter(pledge_year = yr, active = active))
                                       for yr in currentPledgeYears]})
 
 def details(request, first_name, last_name):
