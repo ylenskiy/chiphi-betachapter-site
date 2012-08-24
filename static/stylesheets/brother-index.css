@@ -13,10 +13,38 @@ div.brothersList {
 }
 
 div.brothersList a {
-  text-decoration: none;
-  color: black;
+    display:block;
+    text-decoration: none;
+    text-align:center;
+    color: black;
+    padding:.3em;
 }
 
 div.brothersList a:hover {
-  color: #962c21;
+    color:white;
+    background-color:red;
+}
+
+div.brothersList ul {
+    list-style:none;
+}
+
+div.brothersList li {
+    list-style:none;
+    float:left;
+    margin: .3em;
+}
+
+div.brothersList p.brotherName {
+    margin-top:auto;
+    margin-bottom:auto;
+}
+
+img.brotherPicture {
+    margin-right:auto;
+    margin-left:auto;
+    padding:.3em;
+    clear:both;
+    width:4em;
+    height:4em;
 }
