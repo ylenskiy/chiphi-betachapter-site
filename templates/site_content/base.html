@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/site_content.css" type="text/css" />
+{% endblock %}
+
 {% block title %}{{ staticcontent.title }}{% endblock %}
 {% block content %}
 <h1>{{ staticcontent.title }}</h1>
