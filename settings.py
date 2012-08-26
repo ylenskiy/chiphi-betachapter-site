@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'brothers',
+    'site_content',
 #    'south',
 )
 
