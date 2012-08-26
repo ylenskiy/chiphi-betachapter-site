@@ -29,6 +29,8 @@ urlpatterns += patterns(
 # Static menu urls
 urlpatterns += patterns(
     '',
+    url(r'^rush/(?P<slug>[-_\w]+)',
+        DetailView.as_view(model = StaticContent, template_name = "rush.html"), name = "rush"),
     url(r'^involvement/(?P<slug>[-_\w]+)',
         DetailView.as_view(model = StaticContent, template_name = "involvement.html"), name = "involvement"),
     url(r'^about/(?P<slug>[-_\w]+)',
