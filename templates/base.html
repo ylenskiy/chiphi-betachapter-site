@@ -19,21 +19,15 @@
                 <a href="{% url about 'Our_Philosophy' %}">About Us</a>
                 <ul>
                   <li><a href="{% url about 'Our_Philosophy' %}">Our Philosophy</a></li>
-                  <li><a href="{% url about 'Chapter_House' %}">The Chapter House</a></li>
                 </ul>
               </li>
               <li class="{% block menu_brothers %}{% endblock %}">
                 <a href="{% url brothers %}">Brothers</a>
-                <!-- <ul> -->
-                <!--   <li><a href="{% url brothers %}">Actives</a></li> -->
-                <!--   <li><a href="{% url alums %}">Alums</a></li> -->
-                <!-- </ul> -->
               </li>
               <li class="{% block menu_rush %}{% endblock %}">
-                <a href="{% url rush %}">Rush</a>
+                <a href="{% url rush 'Rushing_Chi_Phi' %}">Rush</a>
                 <ul>
-                  <li><a href="{% url rush %}">Rushing Chi Phi</a></li>
-                  <!-- <li><a href="{% url rush %}">Rush Week Schedule</a></li> -->
+                  <li><a href="{% url rush 'Rushing_Chi_Phi' %}">Rushing Chi Phi</a></li>
                 </ul>
               </li>
               <li class="{% block menu_history %}{% endblock %}">
