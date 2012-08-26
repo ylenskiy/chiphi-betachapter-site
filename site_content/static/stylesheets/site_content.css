@@ -5,3 +5,7 @@ div.baseContainer p {
 div.baseContainer ul {
     margin-left:3em;
 }
+
+div.baseContainer blockquote {
+    font-style: italic;
+}
