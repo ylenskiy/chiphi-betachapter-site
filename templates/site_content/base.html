@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}{{ staticcontent.slug }}{% endblock %}
+{% block title %}{{ staticcontent.title }}{% endblock %}
 {% block content %}
-<h1>{{ staticcontent.slug }}</h1>
+<h1>{{ staticcontent.title }}</h1>
 
 {{ staticcontent.content|safe }}
 {% endblock %}
