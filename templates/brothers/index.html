@@ -15,8 +15,10 @@
         {% for brother in p.1 %}
         <li>
           <a class="cf" href="/brothers/{{brother.first_name}}_{{brother.last_name}}">
-            <img src="{{ brother.getPortraitUrl }}" class="brotherPicture"
-                 alt="Picture of {{ brother.first_name }} {{ brother.last_name }}." />
+            <div class="brotherPictureWrapper">
+              <img src="{{ brother.getPortraitUrl }}" class="brotherPicture"
+                  alt="Picture of {{ brother.first_name }} {{ brother.last_name }}." />
+            </div>
             <p class="brotherName">{{ brother.first_name }} {{ brother.last_name }}</p>
           </a>
         </li>

@@ -4,7 +4,7 @@
 }
 
 div.brothersListWrapper {
-    clear:both;
+  clear:both;
   margin: 20px 0;
 }
 
@@ -21,9 +21,8 @@ div.brothersList a {
     padding:.3em;
 }
 
-div.brothersList a:hover {
-    color:white;
-    background-color:red;
+div.brothersList a:hover p.brotherName {
+   color: #962C21;
 }
 
 div.brothersList ul {
@@ -44,10 +43,15 @@ div.brothersList p.brotherName {
 }
 
 img.brotherPicture {
-    margin-right:auto;
-    margin-left:auto;
+    max-width:4em;
+}
+
+div.brotherPictureWrapper {
     padding:.3em;
     clear:both;
+    margin-right:auto;
+    margin-left:auto;
     width:4em;
     height:4em;
+    overflow:hidden;
 }
