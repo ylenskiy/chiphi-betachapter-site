@@ -6,7 +6,7 @@
   {% csrf_token %}
   <table>
     <tr>
-      <th><label>Brother: </label></th>
+      <td><label>Brother [Required]:</label></td>
       <td>
         <select name="brother">
           {% for brother in actives %}
@@ -15,7 +15,20 @@
         </select>
       </td>
     </tr>
-    {{ form.as_table }}
+    {% for field in form %}
+    <tr class="baseForm">
+      <td class="baseForm">{{ field.label_tag }}{% if field.field.required %} [Required]{% else %} [Optional]{% endif %}:</td>
+      <td class="baseForm">{{ field }}
+        {% if field.errors %}
+        <span class="baseForm errorText">{% for error in  field.errors %}{{ error }} {% endfor %}</span>
+        {% else %}
+        {% if field.help_text %}
+        <span class="baseForm helpText">{{ field.help_text }}</span>
+        {% endif %}
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
   </table>
   <input type="submit" name="Submit" value="Submit" />
 </form>

@@ -15,16 +15,18 @@
       <th>Description</th>
       <th>Date</th>
       <th>Amount</th>
+      <th>Evidence</th>
       <th>Approve</th>
       <th>Deny</th>
       <th>No Action</th>
     </tr>
     {% for request in requests %}
     <tr class="{% if request.is_debt %}debt-entry{% else %}credit-entry{% endif %} {% cycle 'odd' 'even' %}">
-      <td>{{ request.user.brother.first_name }} {{ request.user.brother.last_name }}</td>
+      <td>{{ request.user.brother }}</td>
       <td>{{ request.description }}</td>
       <td>{{ request.created }}</td>
       <td class="amount">{{ request.amount_string }}</td>
+      <td>{% if request.evidence %}<a href="{{ request.evidence.url }}">Evidence</a>{% else %}None{% endif %}</td>
       <td><input class="approval" type="radio" name="{{ request.pk }}" value="approve" /></td>
       <td><input class="approval" type="radio" name="{{ request.pk }}" value="deny" /></td>
       <td><input class="approval" type="radio" name="{{ request.pk }}" value="no_action" checked /></td>
