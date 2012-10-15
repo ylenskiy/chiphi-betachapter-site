@@ -72,18 +72,3 @@ def assign_fine(request):
             'actives': Brother.objects.filter(active = True),
             'form': form,
             })
-
-def account_setup(request):
-    if request.method == "POST":
-        for (pk, amount_string) in request.POST.items():
-            if pk.isdigit():
-                user = Brother.objects.get(pk=pk).user
-                amount = float(amount_string)
-                entry = DeltaEntry(user = user,
-                                   amount = amount,
-                                   description = "Initial balance.",
-                                   approved = True)
-                entry.save()
-    return render(request, 'delta/account_setup.html', {
-            'actives': Brother.objects.filter(active = True),
-            })
