@@ -47,8 +47,11 @@ class Brother(models.Model):
     def getBalance(self):
         return sum([entry.amount for entry in DeltaEntry.objects.filter(user = self.user, approved = True)])
 
-    def __unicode__(self):
+    def fullName(self):
         return self.first_name + ' ' + self.last_name
+
+    def __unicode__(self):
+        return self.fullName()
 
 class BrotherEditForm(ModelForm):
     class Meta:
