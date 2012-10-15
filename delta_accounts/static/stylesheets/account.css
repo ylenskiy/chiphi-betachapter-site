@@ -1,3 +1,7 @@
+table {
+    margin: 0 auto;
+}
+
 span#balance_debt {
     color:red;
 }
@@ -28,9 +32,12 @@ tr.credit-entry td.amount {
     color: #00AA00;
 }
 
+tr.pending-entry td.amount, tr.unapproved-entry td.amount {
+    color:#AAAAAA;
+}
+
 tr.unapproved-entry, tr.unapproved-entry td.amount {
     font-style: italic;
-    color:#AAAAAA;
 }
 
 tr.unapproved-entry td.approval {
@@ -62,10 +69,6 @@ tr.even {
 
 tr.odd {
     background-color:#DDDDDD;
-}
-
-table {
-    margin: 0 auto;
 }
 
 div#entry_request_link {
