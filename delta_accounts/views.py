@@ -44,14 +44,17 @@ def entry_approval(request):
     if request.method == "POST":
         for (k,v) in request.POST.items():
             if k.isdigit():
-                entry = DeltaEntry.objects.get(id=k)
+                entry = DeltaEntry.objects.get(pk=k)
                 if v == 'approve':
                     entry.approved = True
                 elif v == 'deny':
                     entry.approved = False
                 entry.save()
+    requests = DeltaEntry.objects.filter(approved = None)
+    if not(request.user.has_perm('delta_accounts.can_add_entries')):
+        requests = requests.exclude(user = request.user)
     return render(request, 'delta/entry_approval.html', {
-            'requests': DeltaEntry.objects.filter(approved = None)
+            'requests': requests
             })
 
 @permission_required('delta_accounts.can_assign_fines')
