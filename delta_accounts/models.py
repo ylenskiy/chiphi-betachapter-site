@@ -42,3 +42,8 @@ class FineForm(ModelForm):
     class Meta:
         model = DeltaEntry
         exclude = ('user', 'approved', 'created')
+
+class EntryForm(ModelForm):
+    class Meta:
+        model = DeltaEntry
+        exclude = ('user', 'approved', 'created')

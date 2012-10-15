@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Add Entry</h1>
+<form method="post" id="" action="">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <th><label>Brother: </label></th>
+      <td>
+        <select name="brother">
+          {% for brother in actives %}
+          <option value="{{ brother.pk }}">{{ brother.first_name }} {{ brother.last_name }}</option>
+          {% endfor %}
+        </select>
+      </td>
+    </tr>
+    {{ form.as_table }}
+  </table>
+  <input type="submit" name="Submit" value="Submit" />
+</form>
+{% endblock %}

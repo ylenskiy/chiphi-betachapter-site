@@ -1,4 +1,4 @@
-from delta_accounts.models import DeltaEntry, EntryRequestForm, FineForm
+from delta_accounts.models import DeltaEntry, EntryRequestForm, FineForm, EntryForm
 from brothers.models import Brother
 from django.contrib.auth.decorators import login_required, permission_required
 
@@ -72,6 +72,23 @@ def assign_fine(request):
     else:
         form = FineForm()
     return render(request, 'delta/assign_fine.html', {
+            'actives': Brother.objects.filter(active = True),
+            'form': form,
+            })
+
+@permission_required('delta_accounts.can_add_entries')
+def add_entry(request):
+    if request.method == "POST":
+        form = EntryForm(request.POST)
+        if form.is_valid():
+            entry = form.save(commit = False)
+            entry.approved = True
+            entry.user = Brother.objects.get(pk = request.POST.get('brother')).user
+            entry.save()
+            return HttpResponseRedirect('/delta/add_entry/')
+    else:
+        form = EntryForm()
+    return render(request, 'delta/add_entry.html', {
             'actives': Brother.objects.filter(active = True),
             'form': form,
             })

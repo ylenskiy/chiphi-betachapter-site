@@ -65,6 +65,9 @@
                   {% if perms.delta_accounts.can_assign_fines %}
                   <li><a href="{% url assign_fine %}">Assign Fine</a></li>
                   {% endif %}
+                  {% if perms.delta_account.can_add_entries %}
+                  <li><a href="{% url add_entry %}">Add entry</a></li>
+                  {% endif %}
                 </ul>
               </li>
               <li class="{% block menu_edit_profile %}{% endblock %}">

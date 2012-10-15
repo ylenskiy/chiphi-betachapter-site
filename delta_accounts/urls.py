@@ -8,4 +8,5 @@ urlpatterns = patterns(
     url(r'^entry_request/$', entry_request, name="entry_request"),
     url(r'^entry_approval/$', entry_approval, name="entry_approval"),
     url(r'^assign_fine/$', assign_fine, name="assign_fine"),
+    url(r'^add_entry/$', 'add_entry', name="add_entry"),
     )
