@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 
 from django.forms import ModelForm
 
+from delta_accounts.models import DeltaEntry
+
 class Officer(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(verbose_name = "Officer position description and responsibilities")
@@ -41,6 +43,9 @@ class Brother(models.Model):
             return join(settings.STATIC_URL, "images/default.jpg")
 
     def isOfficer(self): return self.officer_positions.count() > 0
+
+    def getBalance(self):
+        return sum([entry.amount for entry in DeltaEntry.objects.filter(user = self.user, approved = True)])
 
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name

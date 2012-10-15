@@ -67,6 +67,7 @@
                   {% endif %}
                   {% if perms.delta_account.can_add_entries %}
                   <li><a href="{% url add_entry %}">Add entry</a></li>
+                  <li><a href="{% url account_index %}">Account index</a></li>
                   {% endif %}
                 </ul>
               </li>

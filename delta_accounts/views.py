@@ -25,7 +25,7 @@ class AccountView(ListView):
 @login_required
 def entry_request(request):
     if request.method == "POST":
-        form = EntryRequestForm(request.POST)
+        form = EntryRequestForm(request.POST, request.FILES)
         if form.is_valid():
             form.clean()
             entry = form.save(commit=False)
@@ -91,4 +91,26 @@ def add_entry(request):
     return render(request, 'delta/add_entry.html', {
             'actives': Brother.objects.filter(active = True),
             'form': form,
+            })
+
+@permission_required('delta_accounts.can_add_entries')
+def account_index(request):
+    currentPledgeYears = sorted(
+        list(
+            set(
+                [b.pledge_year for b in Brother.objects.filter(active = True)]
+                )), reverse = False)
+    return render(request, 'delta/account_index.html', {
+            'year_brothers': [(yr, Brother.objects.filter(pledge_year = yr, active = True))
+                              for yr in currentPledgeYears],
+            })
+
+@permission_required('delta_accounts.can_add_entries')
+def view_account(request, pk):
+    if request.method == "POST": pass
+    brother = Brother.objects.get(pk = pk)
+    return render(request, 'delta/view_account.html', {
+            'brother': brother,
+            'account': DeltaEntry.objects.filter(user=brother.user),
+            'balance': brother.getBalance(),
             })
