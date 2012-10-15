@@ -9,7 +9,7 @@
 {% block content %}
 <h1 id="balance">Balance: <span id="balance_{% if balance < 0 %}debt{% else %}credit{% endif %}">{{ balance_string }}</span></h1>
 <div id="entry_request_link">
-  <a id="entry_request_link" href="{% url entry_request %}">Make Payment/Debt Request</a>
+  <a id="entry_request_link" href="{% url entry_request %}">Request Reimbursment/Fine</a>
 </div>
 {% if account %}
 <table>
