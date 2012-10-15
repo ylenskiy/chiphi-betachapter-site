@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ STATIC_URL }}/stylesheets/account.css" type="text/css" media="screen" />
+{% endblock %}
+
+{% block content %}
+<table>
+  {% for yr, bros in year_brothers %}
+  <tr>
+    <th>{{ yr }}'s</th>
+    <th>Brother</th>
+    <th>Balance</th>
+  </tr>
+  {% for bro in bros %}
+  <tr class="{% if bro.getBalance < 0 %}debt-entry{% else %}credit-entry{% endif %}">
+    <td></td>
+    <td><a href="{% url delta_account bro.pk %}">{{ bro.first_name }} {{ bro.last_name }}</a></td>
+    <td class="amount">{{ bro.getBalance }}</td>
+  </tr>
+  {% endfor %}
+  {% endfor %}
+</table>
+{% endblock %}

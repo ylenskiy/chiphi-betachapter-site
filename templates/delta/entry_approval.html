@@ -25,9 +25,9 @@
       <td>{{ request.description }}</td>
       <td>{{ request.created }}</td>
       <td class="amount">{{ request.amount_string }}</td>
-      <td><input class="approval" type="radio" name="{{ request.id }}" value="approve" /></td>
-      <td><input class="approval" type="radio" name="{{ request.id }}" value="deny" /></td>
-      <td><input class="approval" type="radio" name="{{ request.id }}" value="no_action" checked /></td>
+      <td><input class="approval" type="radio" name="{{ request.pk }}" value="approve" /></td>
+      <td><input class="approval" type="radio" name="{{ request.pk }}" value="deny" /></td>
+      <td><input class="approval" type="radio" name="{{ request.pk }}" value="no_action" checked /></td>
       {% endfor %}
   </table>
   <input type="submit" name="Submit" value="Submit" />

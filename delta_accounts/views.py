@@ -1,4 +1,4 @@
-from delta_accounts.models import DeltaEntry, EntryRequestForm, FineForm
+from delta_accounts.models import DeltaEntry, EntryRequestForm, FineForm, EntryForm
 from brothers.models import Brother
 from django.contrib.auth.decorators import login_required, permission_required
 
@@ -25,7 +25,7 @@ class AccountView(ListView):
 @login_required
 def entry_request(request):
     if request.method == "POST":
-        form = EntryRequestForm(request.POST)
+        form = EntryRequestForm(request.POST, request.FILES)
         if form.is_valid():
             form.clean()
             entry = form.save(commit=False)
@@ -44,14 +44,17 @@ def entry_approval(request):
     if request.method == "POST":
         for (k,v) in request.POST.items():
             if k.isdigit():
-                entry = DeltaEntry.objects.get(id=k)
+                entry = DeltaEntry.objects.get(pk=k)
                 if v == 'approve':
                     entry.approved = True
                 elif v == 'deny':
                     entry.approved = False
                 entry.save()
+    requests = DeltaEntry.objects.filter(approved = None)
+    if not(request.user.has_perm('delta_accounts.can_add_entries')):
+        requests = requests.exclude(user = request.user)
     return render(request, 'delta/entry_approval.html', {
-            'requests': DeltaEntry.objects.filter(approved = None)
+            'requests': requests
             })
 
 @permission_required('delta_accounts.can_assign_fines')
@@ -71,4 +74,43 @@ def assign_fine(request):
     return render(request, 'delta/assign_fine.html', {
             'actives': Brother.objects.filter(active = True),
             'form': form,
+            })
+
+@permission_required('delta_accounts.can_add_entries')
+def add_entry(request):
+    if request.method == "POST":
+        form = EntryForm(request.POST)
+        if form.is_valid():
+            entry = form.save(commit = False)
+            entry.approved = True
+            entry.user = Brother.objects.get(pk = request.POST.get('brother')).user
+            entry.save()
+            return HttpResponseRedirect('/delta/add_entry/')
+    else:
+        form = EntryForm()
+    return render(request, 'delta/add_entry.html', {
+            'actives': Brother.objects.filter(active = True),
+            'form': form,
+            })
+
+@permission_required('delta_accounts.can_add_entries')
+def account_index(request):
+    currentPledgeYears = sorted(
+        list(
+            set(
+                [b.pledge_year for b in Brother.objects.filter(active = True)]
+                )), reverse = False)
+    return render(request, 'delta/account_index.html', {
+            'year_brothers': [(yr, Brother.objects.filter(pledge_year = yr, active = True))
+                              for yr in currentPledgeYears],
+            })
+
+@permission_required('delta_accounts.can_add_entries')
+def view_account(request, pk):
+    if request.method == "POST": pass
+    brother = Brother.objects.get(pk = pk)
+    return render(request, 'delta/view_account.html', {
+            'brother': brother,
+            'account': DeltaEntry.objects.filter(user=brother.user),
+            'balance': brother.getBalance(),
             })

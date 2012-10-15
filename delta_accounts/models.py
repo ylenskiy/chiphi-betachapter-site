@@ -30,6 +30,7 @@ class DeltaEntry(models.Model):
         permissions = (
             ('can_approve_entries', 'Can approve delta entries.'),
             ('can_assign_fines', 'Can assign delta fines.'),
+            ('can_create_entries', 'Can create delta entries.'),
             )
 
 class EntryRequestForm(ModelForm):
@@ -38,6 +39,11 @@ class EntryRequestForm(ModelForm):
         exclude = ('user', 'approved', 'created')
 
 class FineForm(ModelForm):
+    class Meta:
+        model = DeltaEntry
+        exclude = ('user', 'approved', 'created')
+
+class EntryForm(ModelForm):
     class Meta:
         model = DeltaEntry
         exclude = ('user', 'approved', 'created')

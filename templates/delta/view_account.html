@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ STATIC_URL }}/stylesheets/account.css" type="text/css" media="screen" />
+{% endblock %}
+
+{% block title %}Account{% endblock %}
+
+{% block content %}
+<h1>{{ brother.first_name }} {{ brother.last_name }}</h1>
+<h1 id="balance">Balance: <span id="balance_{% if balance < 0 %}debt{% else %}credit{% endif %}">{{ balance }}</span></h1>
+{% if account %}
+<table>
+  <tr>
+    <th></th>
+    <th>Amount</th>
+    <th>Description</th>
+    <th>Approval Status</th>
+    <th>Date</th>
+    <th>Evidence</th>
+  </tr>
+  {% for entry in account %}
+  <tr class="{% if entry.is_debt %}debt-entry{% else %}credit-entry{% endif %} {% if entry.approved %}approved-entry{% elif entry.approved == None %}pending-entry{% else %}unapproved-entry{% endif %} {% cycle 'odd' 'even' %}">
+    <td class="blank"></td>
+    <td class="amount">{{ entry.amount_string }}</td>
+    <td class="description">{{ entry.description }}</td>
+    <td class="approval">{% if entry.approved %}Approved{% elif entry.approved == None %}Pending Review{% else %}Denied{% endif %}</td>
+    <td>{{ entry.created }}</td>
+    <td>{% if entry.evidence %}<a href="{{ entry.evidence }}">Evidence</a>{% else %}None{% endif %}</td>
+  </tr>
+  {% endfor %}
+  <tr class="balance {% if balance < 0 %}debt-entry{% else %}credit-entry{% endif %}">
+    <th>Balance</th>
+    <td class="amount">{{ balance }}</td>
+    <td class="description">Official/approved balance</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+{% else %}
+<p>Balance: $0.00</p>
+{% endif %}
+{% endblock %}
