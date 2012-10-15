@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ STATIC_URL }}/stylesheets/account.css" type="text/css" media="screen" />
+{% endblock %}
+
+{% block title %}Account{% endblock %}
+
+{% block content %}
+<h1 id="balance">Balance: <span id="balance_{% if balance < 0 %}debt{% else %}credit{% endif %}">{{ balance_string }}</span></h1>
+<div id="entry_request_link">
+  <a id="entry_request_link" href="{% url entry_request %}">Make Payment/Debt Request</a>
+</div>
+{% if account %}
+<table>
+  <tr>
+    <th></th>
+    <th>Amount</th>
+    <th>Description</th>
+    <th>Approval Status</th>
+    <th>Date</th>
+  </tr>
+  {% for entry in account %}
+  <tr class="{% if entry.is_debt %}debt-entry{% else %}credit-entry{% endif %} {% if entry.approved %}approved-entry{% elif entry.approved == None %}pending-entry{% else %}unapproved-entry{% endif %} {% cycle 'odd' 'even' %}">
+    <td class="blank"></td>
+    <td class="amount">{{ entry.amount_string }}</td>
+    <td class="description">{{ entry.description }}</td>
+    <td class="approval">{% if entry.approved %}Approved{% elif entry.approved == None %}Pending Review{% else %}Denied{% endif %}</td>
+    <td>{{ entry.created }}</td>
+  </tr>
+  {% endfor %}
+  <tr class="balance {% if balance < 0 %}debt-entry{% else %}credit-entry{% endif %}">
+    <th>Balance</th>
+    <td class="amount">{{ balance_string }}</td>
+    <td class="description">Official/approved balance</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+{% else %}
+<p>Balance: $0.00</p>
+{% endif %}
+{% endblock %}

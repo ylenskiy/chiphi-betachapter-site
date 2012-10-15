@@ -51,7 +51,6 @@ def register(request):
 def edit(request):
     brother = request.user.get_profile()
     if request.method == "POST":
-        print request.POST
         form = BrotherEditForm(request.POST, request.FILES, instance = brother)
         if form.is_valid():
             form.save()

@@ -24,6 +24,7 @@ urlpatterns += patterns(
 urlpatterns += patterns(
     '',
     url(r'^brothers/', include('brothers.urls')),
+    url(r'^delta/', include('delta_accounts.urls')),
 )
 
 # Static menu urls

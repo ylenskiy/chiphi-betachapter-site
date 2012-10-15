@@ -1,0 +1,93 @@
+span#balance_debt {
+    color:red;
+}
+
+span#balance_credit {
+    color:green;
+}
+
+tr td {
+    padding: .3em 1em;
+    text-align: center;
+}
+
+td.blank {
+    background-color: white;
+}
+
+td.amount {
+    text-align: right;
+    font-weight: bold;
+}
+
+tr.debt-entry td.amount {
+    color: red;
+}
+
+tr.credit-entry td.amount {
+    color: #00AA00;
+}
+
+tr.unapproved-entry, tr.unapproved-entry td.amount {
+    font-style: italic;
+    color:#AAAAAA;
+}
+
+tr.unapproved-entry td.approval {
+    color:white;
+    font-style: normal;
+    background-color: #FF0000;
+}
+
+tr.pending-entry td.approval {
+    background-color: #FFFF33;
+}
+
+td.description {
+    font-style: italic;
+}
+
+td.approval {
+    font-weight:bold;
+    text-align: center;
+}
+
+tr.balance td:first-child {
+    font-weight: bold;
+}
+
+tr.even {
+    background-color:white;
+}
+
+tr.odd {
+    background-color:#DDDDDD;
+}
+
+table {
+    margin: 0 auto;
+}
+
+div#entry_request_link {
+    display:block;
+    text-align:center;
+    height:2em;
+    margin:.5em;
+}
+
+div#entry_request_link a, div#entry_request_link a:visited {
+    text-decoration:none;
+    color:black;
+    padding:.7em;
+    border:black;
+    border-style:solid;
+}
+
+div#entry_request_link a:hover {
+    font-weight:bold;
+}
+
+input.approval {
+    margin:0;
+    padding:0;
+}

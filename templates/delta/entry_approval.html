@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ STATIC_URL }}/stylesheets/account.css" type="text/css" media="screen" />
+{% endblock %}
+
+{% block content %}
+<h1>Approve Delta items</h1>
+{% if requests %}
+<form method="post" id="" action="">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Approve</th>
+      <th>Deny</th>
+      <th>No Action</th>
+    </tr>
+    {% for request in requests %}
+    <tr class="{% if request.is_debt %}debt-entry{% else %}credit-entry{% endif %} {% cycle 'odd' 'even' %}">
+      <td>{{ request.user.brother.first_name }} {{ request.user.brother.last_name }}</td>
+      <td>{{ request.description }}</td>
+      <td>{{ request.created }}</td>
+      <td class="amount">{{ request.amount_string }}</td>
+      <td><input class="approval" type="radio" name="{{ request.id }}" value="approve" /></td>
+      <td><input class="approval" type="radio" name="{{ request.id }}" value="deny" /></td>
+      <td><input class="approval" type="radio" name="{{ request.id }}" value="no_action" checked /></td>
+      {% endfor %}
+  </table>
+  <input type="submit" name="Submit" value="Submit" />
+ </form>
+{% else %}
+<p>No requests to take care of.</p>
+{% endif %}
+{% endblock %}
