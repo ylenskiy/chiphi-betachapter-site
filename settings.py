@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'brothers',
     'site_content',
+    'delta_accounts',
 #    'south',
 )
 

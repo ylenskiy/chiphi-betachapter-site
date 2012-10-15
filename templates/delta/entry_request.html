@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Request Reimbursment or (why?) Fine</h1>
+<form method="post" id="" action="">
+  {% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+  <input type="submit" name="Submit" value="Submit" />
+</form>
+{% endblock %}
