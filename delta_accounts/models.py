@@ -12,7 +12,7 @@ class DeltaEntry(models.Model):
     
     approved    = models.NullBooleanField(default = None)
 
-    created     = models.DateTimeField(auto_now_add=True)
+    created     = models.DateTimeField(auto_now_add=True, editable=False)
 
     def is_debt(self):
         return (self.amount < 0)

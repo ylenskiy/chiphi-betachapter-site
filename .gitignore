@@ -9,3 +9,5 @@ media
 
 */migrations
 .ropeproject
+/.DS_Store
+/static/.DS_Store

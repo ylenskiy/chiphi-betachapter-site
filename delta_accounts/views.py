@@ -1,10 +1,11 @@
-from delta_accounts.models import DeltaEntry, EntryRequestForm, FineForm, EntryForm
 from brothers.models import Brother
-from django.contrib.auth.decorators import login_required, permission_required
+from delta_accounts.models import DeltaEntry, EntryRequestForm, FineForm, EntryForm
 
+from django.contrib.auth.decorators import login_required, permission_required
 from django.views.generic import ListView
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.forms.models import modelformset_factory
 
 class AccountView(ListView):
     template_name = "delta/account.html"
@@ -27,7 +28,6 @@ def entry_request(request):
     if request.method == "POST":
         form = EntryRequestForm(request.POST, request.FILES)
         if form.is_valid():
-            form.clean()
             entry = form.save(commit=False)
             entry.user = request.user
             entry.approved = None
@@ -62,7 +62,6 @@ def assign_fine(request):
     if request.method == "POST":
         form = FineForm(request.POST)
         if form.is_valid():
-            form.clean()
             fine = form.save(commit = False)
             fine.approved = True
             fine.user = Brother.objects.get(pk = request.POST.get('brother')).user
@@ -107,10 +106,24 @@ def account_index(request):
 
 @permission_required('delta_accounts.can_add_entries')
 def view_account(request, pk):
-    if request.method == "POST": pass
     brother = Brother.objects.get(pk = pk)
+    queryset = DeltaEntry.objects.filter(user=brother.user)
+    EntryFormSet = modelformset_factory(DeltaEntry, exclude=('user'), can_delete=True)
+    if request.method == "POST":
+        formset = EntryFormSet(request.POST, request.FILES, queryset = queryset)
+        if formset.is_valid():
+            entries = formset.save(commit=False)
+            for entry in entries:
+                entry.user = brother.user
+                entry.save()
+            return HttpResponseRedirect('/delta/account/{}'.format(pk))
+    else:
+        formset = EntryFormSet(queryset = queryset,
+                               initial = [{
+                    'approved': True
+                    }])
     return render(request, 'delta/view_account.html', {
             'brother': brother,
-            'account': DeltaEntry.objects.filter(user=brother.user),
+            'formset': formset,
             'balance': brother.getBalance(),
             })

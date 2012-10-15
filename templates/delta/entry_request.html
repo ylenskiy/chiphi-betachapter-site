@@ -2,10 +2,23 @@
 
 {% block content %}
 <h1>Request Reimbursment or (why?) Fine</h1>
-<form method="post" id="" action="">
+<form method="post" id="" action="" enctype="multipart/form-data">
   {% csrf_token %}
   <table>
-    {{ form.as_table }}
+    {% for field in form %}
+    <tr class="baseForm">
+      <td class="baseForm">{{ field.label_tag }}{% if field.field.required %} [Required]{% else %} [Optional]{% endif %}:</td>
+      <td class="baseForm">{{ field }}
+        {% if field.errors %}
+        <span class="baseForm errorText">{% for error in  field.errors %}{{ error }} {% endfor %}</span>
+        {% else %}
+        {% if field.help_text %}
+        <span class="baseForm helpText">{{ field.help_text }}</span>
+        {% endif %}
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
   </table>
   <input type="submit" name="Submit" value="Submit" />
 </form>
