@@ -73,6 +73,10 @@
               <li class="{% block menu_logout %}{% endblock %}">
                 <a href="{% url logout %}">Logout</a>
               </li>
+              {% else %}
+              <li class="{% block menu_login %}{% endblock %}">
+                <a href="{% url login %}">Login</a>
+              </li>
               {% endif %}
             </ul>
         </div></div>
