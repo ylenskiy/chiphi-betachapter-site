@@ -37,7 +37,7 @@ def register(request):
             brother      = bform.save(commit=False)
             brother.user = user
             brother.save()
-            return HttpResponseRedirect('{}_{}'.format(brother.first_name, brother.last_name))
+            return HttpResponseRedirect('details/{}'.format(brother.name))
     else:
         uform = UserCreationForm()
         bform = BrotherEditForm()
@@ -61,23 +61,3 @@ def edit(request):
     return render(request, 'brothers/edit.html', {
             'form': form,
             })
-
-def generate(request):
-    dir = sys.path[0]
-    reader = csv.reader(open(dir + '/brothers/brothers.csv','rb'))
-    for brother in reader:
-      dbBrother = Brother()
-      email = brother[0] + '@mit.edu'
-      user = User.objects.create_user(brother[0],email, brother[1])
-      user.save()
-      dbBrother.user = user
-      name = brother[2]
-      dbBrother.first_name = name.split(' ')[0]
-      dbBrother.last_name = ' '.join(name.split(' ')[1:])
-      dbBrother.email = email
-      dbBrother.grad_year = brother[4]
-      dbBrother.pledge_year = brother[4]
-      dbBrother.active = True
-      dbBrother.officer_positions = brother[6]
-      dbBrother.majors = brother[5]
-      dbBrother.save()

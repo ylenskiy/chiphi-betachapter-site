@@ -20,8 +20,7 @@ def getImageFileName(instance, filename):
 class Brother(models.Model):
     user        = models.OneToOneField(User, primary_key = True, editable = False)
 
-    first_name  = models.CharField(max_length=100)
-    last_name   = models.CharField(max_length=100)
+    name        = models.CharField(max_length=300)
     email       = models.EmailField()
     grad_year   = models.SmallIntegerField(verbose_name = 'Graduation year')
     pledge_year = models.SmallIntegerField(verbose_name = 'Pledge class year')
@@ -48,7 +47,7 @@ class Brother(models.Model):
         return sum([entry.amount for entry in DeltaEntry.objects.filter(user = self.user, approved = True)])
 
     def fullName(self):
-        return self.first_name + ' ' + self.last_name
+        return self.name
 
     def __unicode__(self):
         return self.fullName()
