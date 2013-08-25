@@ -14,12 +14,12 @@
         <ul>
         {% for brother in p.1 %}
         <li>
-          <a class="cf" href="/brothers/{{brother.first_name}}_{{brother.last_name}}">
+          <a class="cf" href="/brothers/details/{{brother.fullName}}">
             <div class="brotherPictureWrapper">
               <img src="{{ brother.getPortraitUrl }}" class="brotherPicture"
-                  alt="Picture of {{ brother.first_name }} {{ brother.last_name }}." />
+                  alt="Picture of {{ brother.fullName }}" />
             </div>
-            <p class="brotherName">{{ brother.first_name }} {{ brother.last_name }}</p>
+            <p class="brotherName">{{ brother.fullName }}</p>
           </a>
         </li>
         {% endfor %}
