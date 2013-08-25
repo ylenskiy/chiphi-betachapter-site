@@ -15,7 +15,7 @@ class Officer(models.Model):
 def getImageFileName(instance, filename):
     from os.path import splitext,join
     ext = splitext(filename)[-1]
-    return join('portraits', str(instance.pledge_year), instance.first_name + '_' + instance.last_name + ext)
+    return join('portraits', str(instance.pledge_year), instance.fullName() + ext)
 
 class Brother(models.Model):
     user        = models.OneToOneField(User, primary_key = True, editable = False)
