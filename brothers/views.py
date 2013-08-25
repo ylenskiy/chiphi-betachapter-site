@@ -24,9 +24,9 @@ def index(request, active=True):
                   {'brothers_alist': [(yr, Brother.objects.filter(pledge_year = yr, active = active))
                                       for yr in currentPledgeYears]})
 
-def details(request, first_name, last_name):
+def details(request, name)
     return render(request, 'brothers/details.html',
-                  {'brother': Brother.objects.get(first_name=first_name, last_name=last_name)})
+                  {'brother': Brother.objects.get(name = name)})
 
 def register(request):
     if request.method == "POST":
